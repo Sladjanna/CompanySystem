@@ -16,7 +16,10 @@ namespace Model
         [StringLength(150)]
         public string Description { get; set; }
         public bool Active { get; set; }
-        public Company CompanyID { get; set; }
+
+        [Required]
+        public int CompanyID { get; set; }
+        public virtual Company Company { get; set; }
         #endregion Fields
 
         #region Constructor

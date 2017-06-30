@@ -25,8 +25,14 @@ namespace Model
 
         [StringLength(150)]
         public string Comment { get; set; }
-        public Project ProjectID { get; set; }
-        public User UserID { get; set; }
+
+        [Required]
+        public int ProjectID { get; set; }
+        public virtual Project Project { get; set; }
+
+        [Required]
+        public int UserID { get; set; }
+        public virtual User User { get; set; }
         #endregion Fields
 
         #region Constructor

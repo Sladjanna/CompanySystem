@@ -26,8 +26,12 @@ namespace Model
         public string StateOfProject { get; set; }
 
         [Required]
-        public Department DepartmentID { get; set; }
-        public User ManagerID { get; set; }
+        public int DepartmentID { get; set; }
+        public virtual Department Department { get; set; }
+
+        [Required]
+        public int ManagerID { get; set; }
+        public virtual User User { get; set; }
         #endregion Fields
 
         #region Constructor

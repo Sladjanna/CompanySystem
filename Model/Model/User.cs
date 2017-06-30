@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,19 @@ namespace Model
         public string LastName { get; set; }
 
         [Required, RegularExpression(@"m|f")]
-        public char Gender { get; set; }
+        [MaxLength(1)]
+        public string Gender { get; set; }
 
         public DateTime Birthday { get; set; }
-        public Department DepartmentID { get; set; }
-        public TypeOfUser TypeOfUserID { get; set; }
+
+        [Required]
+        public int DepartmentID { get; set; }
+        public virtual Department Department { get; set; }
+
+        [Required]
+        public int TypeOfUserID { get; set; }
+        public virtual TypeOfUser TypeOfUser { get; set; }
+
         #endregion Fields
 
         #region Constructor

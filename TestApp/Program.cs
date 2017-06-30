@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace TestApp
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             using (var ctx = new CompanyDbContext())
             {
                 var r = ctx.Companies.ToList();
                 var d = ctx.Departments.ToList();
-                var t = ctx.TypeOfUsers.ToList();
+                var tu = ctx.TypeOfUsers.ToList();
                 var u = ctx.Users.ToList();
+             //   var p = ctx.Projects.ToList();
+             //   var ta = ctx.Tasks.ToList();
                 //foreach (var res in r)
                 //{
                 //    Console.WriteLine("done");
