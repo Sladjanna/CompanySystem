@@ -15,15 +15,16 @@ namespace Model
 
         [StringLength(150)]
         public string Description { get; set; }
-        public bool Active { get; set; }
-
-        [Required]
-        public int CompanyID { get; set; }
-        public virtual Company Company { get; set; }
+        public bool isDepartmentActive { get; set; }
         #endregion Fields
 
         #region Constructor
         public Department() { }
+
+        public override string ToString()
+        {
+            return Name;
+        }
         #endregion Constructor
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,24 +18,29 @@ namespace Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        [Required, RegularExpression(@"m|f")]
+        [RegularExpression(@"m|f")]
         [MaxLength(1)]
         public string Gender { get; set; }
 
         public DateTime Birthday { get; set; }
 
-        [Required]
+        public UserType UserType { get; set; }
+
         public int DepartmentID { get; set; }
-        public virtual Department Department { get; set; }
+        [ForeignKey("DepartmentID")]
+        public Department Department { get; set; }
 
-        [Required]
-        public int TypeOfUserID { get; set; }
-        public virtual TypeOfUser TypeOfUser { get; set; }
-
+        public List<Project> Projects { get; set; }
         #endregion Fields
 
         #region Constructor
-        public User() { }
+        public User()  {  }
+
+        public override string ToString()
+        {
+            return FirstName + " " + LastName;
+        }
+
         #endregion Constructor
     }
 }

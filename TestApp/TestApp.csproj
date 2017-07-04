@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3C6BE141-AD17-496D-9E26-A89D2884828C}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestApp</RootNamespace>
     <AssemblyName>TestApp</AssemblyName>
@@ -72,6 +72,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{e36b0824-b1a0-46f4-b1cd-b556d2a83483}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\BussinessLayer.csproj">
+      <Project>{F5E40479-F7DD-44A8-88ED-2D9A2D86606E}</Project>
+      <Name>BussinessLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

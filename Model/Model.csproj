@@ -41,12 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Administrator.cs" />
     <Compile Include="Model\Company.cs" />
     <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Manager.cs" />
     <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Task.cs" />
-    <Compile Include="Model\TypeOfUser.cs" />
     <Compile Include="Model\User.cs" />
   </ItemGroup>
   <ItemGroup>

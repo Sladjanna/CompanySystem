@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,23 +21,39 @@ namespace Model
         [StringLength(150)]
         public string Description { get; set; }
 
-        [Required, RegularExpression(@"ToDo|InProgress|Done|Canceled")]
+        [RegularExpression(@"ToDo|InProgress|Done|Canceled")]
         public string StateOfTask { get; set; }
 
         [StringLength(150)]
         public string Comment { get; set; }
 
-        [Required]
-        public int ProjectID { get; set; }
-        public virtual Project Project { get; set; }
+        public string TaskEmployee { get; set; }  // ???
 
-        [Required]
-        public int UserID { get; set; }
-        public virtual User User { get; set; }
+        public int? EmployeeID { get; set; }
+        public virtual Employee Employee { get; set; }
+
+        public string TasksProject { get; set; }    //????
+
+        public int? ProjectID { get; set; }
         #endregion Fields
 
         #region Constructor
         public Task() { }
+
+        public Task(string title, DateTime startDate, DateTime endDate, int estimated, int remainig, string description, string stateOfTask, string comment, int projectID, int userID)
+        {
+            this.Title = title;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.EstimatedWorkingHour = estimated;
+            this.RemainingWorkingHour = remainig;
+            this.Description = description;
+            this.StateOfTask = stateOfTask;
+            this.Comment = comment;
+            this.ProjectID = projectID;
+            this.EmployeeID = userID;
+        }
+
         #endregion Constructor
     }
 }

@@ -1,5 +1,5 @@
-﻿using DAL.Services;
-using Model;
+﻿using Model;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,6 +11,10 @@ namespace UI.Admin
     {
         #region Fields
         private User User { get; set; }
+        private DepartmentServices _departmentService = new DepartmentServices();
+     //   private ProjectServices _projService = new ProjectServices();
+    //    private EmployeeServices _employeeService = new EmployeeService();
+       // private TaskServices _taskService = new TaskServices();
         #endregion Fields
 
         #region Constructors
@@ -23,7 +27,7 @@ namespace UI.Admin
         public Departments_frm(User user)
         {
             InitializeComponent();
-            //CheckTypeOfUser(user);
+            CheckTypeOfUser(user);
             LoadAllDepartments();
             this.User = user;
             MaximizeBox = false;
@@ -34,26 +38,26 @@ namespace UI.Admin
         #region Methods
         public void CheckTypeOfUser(User user)
         {
-            //currentUser_lbl.Text = user.ToString();
-            //currentTypeOfUser_lbl.Text = "Administrator";
-            //admins_lbl.Visible = true;
-            //dataGVDepartments.Visible = true;
-            //departments_lbl.Visible = true;
-            //departments_lbl.ForeColor = Color.Gray;
+            currentUser_lbl.Text = user.ToString();
+            currentTypeOfUser_lbl.Text = "Administrator";
+            admins_lbl.Visible = true;
+            dataGVDepartments.Visible = true;
+            departments_lbl.Visible = true;
+            departments_lbl.ForeColor = Color.Gray;
         }
 
         public void LoadAllDepartments()
         {
             List<Department> departmenstList = new List<Department>();
 
-            departmenstList = DepartmentServices.GetDepartments();
+            departmenstList = _departmentService.GetAllDepartments();
             dataGVDepartments.DataSource = departmenstList;
         }
 
-     //   void FormClosed(object sender, FormClosedEventArgs e)
-   //     {
-            //this.LoadAllDepartments();
-   //     }
+        void FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.LoadAllDepartments();
+        }
         #endregion Methods
 
         #region Buttons
@@ -111,35 +115,35 @@ namespace UI.Admin
 
         private void dataGVDepartments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //editDepartment_btn.Enabled = true;
-            //deleteDepartment.Enabled = true;
+            editDepartment_btn.Enabled = true;
+            deleteDepartment.Enabled = true;
         }
 
         private void logOut_btn_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //login_frm loginBoard = new login_frm();
-            //loginBoard.ShowDialog();
-            //this.Close();
+            this.Hide();
+            login_frm loginBoard = new login_frm();
+            loginBoard.ShowDialog();
+            this.Close();
         }
         
         private void administator_btn_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //AdminBoard_frm adminBoard = new AdminBoard_frm(User);
-            //adminBoard.FormClosed += new FormClosedEventHandler(FormClosed);
-            //adminBoard.RefToDepartment_frm = this;
-            //adminBoard.ShowDialog();
+            this.Hide();
+            AdminBoard_frm adminBoard = new AdminBoard_frm(User);
+            adminBoard.FormClosed += new FormClosedEventHandler(FormClosed);
+            adminBoard.RefToDepartment_frm = this;
+            adminBoard.ShowDialog();
         }
 
         private void dataGVDepartments_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            //foreach (DataGridViewRow row in dataGVDepartments.Rows)
-            //    if ((bool)row.Cells[3].Value == false)
-            //    {
-            //        row.DefaultCellStyle.BackColor = Color.FromArgb(222, 226, 232);
-            //        row.DefaultCellStyle.ForeColor = Color.FromArgb(90, 91, 91);
-            //    }
+            foreach (DataGridViewRow row in dataGVDepartments.Rows)
+                if ((bool)row.Cells[3].Value == false)
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(222, 226, 232);
+                    row.DefaultCellStyle.ForeColor = Color.FromArgb(90, 91, 91);
+                }
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)

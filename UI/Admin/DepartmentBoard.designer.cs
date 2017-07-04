@@ -50,7 +50,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompanyID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+     //       this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2.SuspendLayout();
@@ -208,7 +208,7 @@
             this.dataGVDepartments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.CompanyID,
-            this.Name,
+            //this.Name,
             this.Description,
             this.Active});
             this.dataGVDepartments.DataSource = this.departmentBindingSource;
@@ -269,10 +269,10 @@
             // 
             // Name
             // 
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
+       //     this.Name.DataPropertyName = "Name";
+      //      this.Name.HeaderText = "Name";
+       //     this.Name.Name = "Name";
+       //     this.Name.ReadOnly = true;
             // 
             // Description
             // 
@@ -340,7 +340,7 @@
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompanyID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+   //     private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Active;
     }

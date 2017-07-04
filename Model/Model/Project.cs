@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Model.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
@@ -25,17 +24,23 @@ namespace Model
         [Required, RegularExpression(@"New|InProgress|Finished|Canceled")]
         public string StateOfProject { get; set; }
 
+        public bool Delayed { get; set; }
+
         [Required]
         public int DepartmentID { get; set; }
+
+        [ForeignKey("DepartmentID")]
         public virtual Department Department { get; set; }
 
         [Required]
         public int ManagerID { get; set; }
-        public virtual User User { get; set; }
+        public virtual List<Employee> Employees { get; set; }
+
         #endregion Fields
 
         #region Constructor
         public Project() { }
+
         #endregion Constructor
     }
 }

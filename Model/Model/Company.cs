@@ -4,18 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Model.Model
 {
-    public class Company
+    public sealed class Company
     {
         #region Fields
-        public int Id { get; set; }
-        public string NameOfCompany { get; set; }
+        private static Company _company;
+        public Dictionary<int, User> Users { get; set; }
+        public Dictionary<int, Department> Departments { get; set; }   
+        public Dictionary<int, Project> Projects { get; set; }
+        public User CurrentUser { get; set; }
+
+        public static Company Instance
+        {
+            get
+            {
+                if (_company == null)
+                {
+                    _company = new Company();
+                }
+
+                return _company;
+            }
+        }
         #endregion Fields
 
-        #region Constructor     
-        public Company()
-        { }
-        #endregion Constructor
+        #region Constructors
+        private Company() { }
+        #endregion Constructors
     }
 }

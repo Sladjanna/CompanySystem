@@ -1,5 +1,6 @@
-﻿using DAL.Services;
+﻿using CompanySystem;
 using Model;
+using Services;
 using System;
 using System.Windows.Forms;
 
@@ -7,6 +8,8 @@ namespace UI
 {
     public partial class login_frm : Form
     {
+        private Validation _validation = new Validation();
+        private UserServices _userService = new UserServices();
         #region Constructor
         public login_frm()
         {
@@ -18,10 +21,10 @@ namespace UI
         #region Buttons
         private void register_lbl_Click(object sender, EventArgs e)
         {
-            //Register_frm register = new CompanySystem.Register_frm();
-            //this.Hide();
-            //register.ShowDialog();
-            //this.Close();
+            Register_frm register = new CompanySystem.Register_frm();
+            this.Hide();
+            register.ShowDialog();
+            this.Close();
         }
 
         private void login_btn_Click(object sender, EventArgs e)
@@ -29,9 +32,9 @@ namespace UI
             string username = tbUserName.Text;
             string password = tbPassword.Text;
 
-            if (DAL.Services.Validation.ErrorProvider(tbUserName, errorProvider) && Validation.ErrorProvider(tbPassword, errorProvider))
+            if (_validation.ErrorProvider(tbUserName, errorProvider) && _validation.ErrorProvider(tbPassword, errorProvider))
             {
-                User user = UserServices.GetUserByUsername(username, password);
+                User user = _userService.GetUserByUsername(username, password);
                 if (user == null)
                 {
                     MessageBox.Show("User doesn't exist of data not correct");
